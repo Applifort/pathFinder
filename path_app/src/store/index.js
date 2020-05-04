@@ -1,10 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
-import rootReducer from './reducers'
+import pathReducer from './pathReducer'
 
 const store = configureStore({ 
   reducer: combineReducers({
-    rootReducer,
+    path: pathReducer,
   }),
 });
 
