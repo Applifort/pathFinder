@@ -3,11 +3,30 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 import useStyles from './styles'
+import { setMode } from '../../store/pathReducer';
+import store from '../../store';
+import finder from '../../utils/Finder';
 
 const PathFinder = () => {
+  const { path } = store.getState();
+  const { width, height, mode, startPoint, finishPoint } = path;
+
+  const { visited, foundPath } = finder({ width, height }, startPoint, finishPoint);
+  console.log(foundPath);
+
   const classes = useStyles();
-  const spaceWidth = 30;
-  const spaceHeight = 30;
+
+  const handleClickStart = (e) => {
+    store.dispatch(setMode('start'));
+  }
+
+  const handleClickFinish = (e) => {
+    store.dispatch(setMode('finish'));
+  }
+
+  const handleClickRun = (e) => {
+    // 
+  }
 
   const generateColumns = (currentRow, columns) => {
     const columnsGrids = [];
@@ -40,15 +59,15 @@ const PathFinder = () => {
     );
   }
 
-  const grids = generateRows(spaceWidth, spaceHeight);
+  const grids = generateRows(width, height);
 
   return (
     <div className={classes.root}>
       <div className={classes.menu}>
-      <Button variant="contained" className={classes.buttons}>Set start point</Button>
-      <Button variant="contained" className={classes.buttons}>Set finish point</Button>
+      <Button variant="contained" className={classes.buttons} onClick={handleClickStart}>Set start point</Button>
+      <Button variant="contained" className={classes.buttons} onClick={handleClickFinish}>Set finish point</Button>
       <Button variant="contained" className={classes.buttons} disabled>Build wall</Button>
-      <Button variant="contained" className={classes.buttons} color='primary'>Find path</Button>
+      <Button variant="contained" className={classes.buttons} color='primary' onClick={handleClickRun}>Find path</Button>
       </div>
       {grids}
     </div>
