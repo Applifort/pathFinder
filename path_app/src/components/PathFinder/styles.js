@@ -1,8 +1,41 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
+  info: {
+    Width: 1000,
+    marginTop: theme.spacing(1),
+  },
+
   grid: {
     backgroundColor: '#B0E0E6',
+    width: 20,
+    height: 20,
+    border: '1px solid white',
+  },
+
+  // visitedGrid: {
+  //   backgroundColor: '#008B8B',
+  //   width: 20,
+  //   height: 20,
+  //   border: '1px solid white',
+  // },
+
+  wallPoint: {
+    backgroundColor: '#483D8B',
+    width: 20,
+    height: 20,
+    border: '1px solid white',
+  },
+
+  startPoint: {
+    backgroundColor: '#F4A460',
+    width: 20,
+    height: 20,
+    border: '1px solid white',
+  },
+
+  finishPoint: {
+    backgroundColor: '#A52A2A',
     width: 20,
     height: 20,
     border: '1px solid white',
@@ -23,7 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   paper: {
-    marginTop: theme.spacing(3), 
+    marginTop: theme.spacing(2), 
   },
 }));
 

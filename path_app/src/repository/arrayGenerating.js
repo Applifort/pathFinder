@@ -8,5 +8,4 @@ export default (width = 3, height = 3) => {
         }
 
     return Object.keys(result);
-
 }

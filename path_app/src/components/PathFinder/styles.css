@@ -1,0 +1,24 @@
+.visitedGrid {
+  background-color: #9400D3;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  animation-name: stretch;
+  animation-duration: 1s; 
+  /*   animation-timing-function: ease-out;  */
+  /*   animation-direction: alternate; */
+  /*     animation-fill-mode: none; */
+  /*   animation-play-state: running; */
+}
+
+@keyframes stretch {
+  0% {
+    transform: scale(.3);
+    background-color: blue;
+    border-radius: 100%;
+  }
+  100% {
+    transform: scale(1);
+    background-color: green;
+  }
+}

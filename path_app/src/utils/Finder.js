@@ -9,29 +9,25 @@ const findPath = (set, start, finish) => {
     const visited = [];
     const foundPath = {};
     let result = false;
-    
-    const iter = () => {
-      if (queue.length === 0) {
-        const data = { visited, foundPath, result }
-        return data;
-      };
   
+    while (queue.length > 0) {
       const checkingVertex = queue.shift();
       if (checkingVertex === finish) {
         result = true;
-        // return
+        break;
+      }
+      if (!visited.includes(checkingVertex)) {
+        visited.push(checkingVertex);
+        grid[checkingVertex].forEach((vertex) => {
+          const processVertex = Object.keys(vertex)[0];
+          if (visited.includes(processVertex)) return;
+          foundPath[processVertex] = checkingVertex;
+          queue.push(processVertex);
+        });
       };
-      
-      visited.push(checkingVertex);
-      grid[checkingVertex].forEach((vertex) => {
-        const processVertex = Object.keys(vertex)[0];
-        if (visited.includes(processVertex)) return;
-        foundPath[processVertex] = checkingVertex;
-        queue.push(processVertex);
-      });
-      return iter();
-    };
-    return iter();
+    }
+
+    return { visited, foundPath, result };
   };
 
   return bfs(start, finish);
